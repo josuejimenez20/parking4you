@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const { dbConnection } = require("../database/config");
 
 class Server {
 
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+        this.conectarDB();
         this.principalPath = "/api/v1"
 
         // Middlawares
@@ -24,6 +26,15 @@ class Server {
         //Directorio publico
         this.app.use(express.static('public'))
     }
+
+    async conectarDB() {
+        try {
+          dbConnection();
+          console.log("DB connected");
+        } catch (error) {
+          throw new Error(error);
+        }
+      }
 
     routes() {
         this.app.use(this.principalPath, require("../routes/indexRoutes"));
