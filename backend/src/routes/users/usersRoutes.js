@@ -1,22 +1,14 @@
 const { Router } = require('express');
 
+const { createNewUserController, verificateLoginUserControllers } = require('../../controllers/users/usersControllers');
 
-const { getInformationUserController } = require('../../controllers/users/usersControllers')
-
-// const {
-//     getInformationUserController,
-//     newUserController,
-//     editInformationUserController } = require('../../controllers/users/usersControllers');
-// const { validateCreate } = require('../../validator/users/newUserValidate');
-// const { editUserValidate } = require('../../validator/users/editUserValidate');
+const { newUserValidate } = require('../../validator/users/newUserValidate');
+const { verificateLoginUser } = require('../../validator/users/verificate_login');
 
 const router = Router();
 
+router.post('/new', newUserValidate, createNewUserController);
 
-// router.get('/information/:id_user/:email/:password', getInformationUserController);
-
-router.get('/new', getInformationUserController);
-
-// router.post('/edit', editUserValidate, editInformationUserController);
+router.post('/login_verificate',verificateLoginUser , verificateLoginUserControllers);
 
 module.exports = router;

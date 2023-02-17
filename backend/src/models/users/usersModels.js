@@ -1,26 +1,64 @@
-// const { conexion } = require('../../database/config');
+const { conexion } = require('../../database/config');
 
 
-function getInformationUserModels() {
-    // const { id_user, email, password } = data;
+function createNewUserModels(data) {
+    const {
+        uniqueUserId, name, last_name,
+        second_last_name, email, password,
+        telephone } = data;
 
-    // return new Promise((resolve, reject) => {
-    //     conexion.query(
-    //         `SELECT * FROM users u 
-    //         INNER JOIN directions ud 
-    //         ON u.id_user_encrypted = ud.id_user_encrypted
-    //         WHERE u.email = '${email}' AND u.password = '${password}'`,
-    //         function (error, result, field) {
-    //             if (error)
-    //                 return reject(error);
-    //             return resolve(result);
-    //         })
-    // })
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `INSERT INTO users(id_user, name, last_name, second_last_name, 
+            email, password, telephone) 
+            VALUES ('${uniqueUserId}','${name}','${last_name}','${second_last_name}',
+            '${email}', '${password}','${telephone}')`,
+            function (error, result, field) {
+                if (error)
+                    return reject(error);
+                result.uniqueUserId = uniqueUserId;
+                return resolve(result);
+            })
+    })
+}
 
-    return "Hello from users models"
+function verificateCreateNewUserModels(email) {
+
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `SELECT email 
+            FROM users as us 
+            WHERE us.email = "${email}" `,
+            function (error, result, field) {
+                if (error)
+                    return reject(error);
+                return resolve(result);
+            })
+    })
+}
+
+function verificateLoginUserModels(data) {
+
+    const {email, password} = data;
+
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `SELECT email, password
+            FROM users as us 
+            WHERE us.email = "${email}" 
+            AND us.password = "${password}" `,
+            function (error, result, field) {
+                if (error)
+                    return reject(error);
+                return resolve(result);
+            })
+    })
 }
 
 
+
 module.exports = {
-    getInformationUserModels
+    createNewUserModels, 
+    verificateCreateNewUserModels,
+    verificateLoginUserModels
 }
