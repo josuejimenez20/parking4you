@@ -14,7 +14,7 @@ const createNewUserController = async (req, res) => {
         // If in services We found the user, the response
         // will empty
         if (response.length === 0) {
-            return res.status(302).json({
+            return res.status(409).json({
                 msg: "existing user"
             })
         }
