@@ -1,13 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { newUser } from './redux/actions/users/newUser';
 
 function AppRouter() {
-  const [count, setCount] = useState(0)
+
+  const dispatch = useDispatch();
+
+  const [count, setCount] = useState(0);
+
+  const { loading, success, error, userData } = useSelector((state) => state.users.new);
+
+  useEffect(() => {
+    console.log(userData);
+  }, [userData]);
+
+  useEffect(() => {
+    console.log(error);
+  }, [error])
 
   return (<>
     <div>
@@ -16,7 +32,8 @@ function AppRouter() {
 
     <div>
       <button onClick={() => {
-        setCount(count + 1)
+        console.log("Calling function 'newUser'");
+        dispatch(newUser());
       }}>Increment</button>
 
       <button onClick={() => {
