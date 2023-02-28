@@ -1,49 +1,45 @@
-import { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { Routes, Route } from 'react-router-dom';
 
-import { newUser } from './redux/actions/users/newUser';
+import {Register } from "./components/register/Register";
+// import NotFound from "./not-found/NotFound";
+// import { NavBar } from "../components/shared/molecules/NavBar";
+// import { Home } from "../components/home/Home";
+// import { About } from "../components/about/About";
 
-function AppRouter() {
+// import { UserInformation } from "../components/user/UserInformation";
+// import { UltimateUser } from "../components/ultimateUser/UltimateUser";
 
-  const dispatch = useDispatch();
+// import { SellTopProducts } from "../components/sellTops/SellTopProducts";
+// import { ListNewProducts } from "../components/ListNewProducts/ListNewProducts";
+// import { SalesProducts } from "../components/SalesProducts/SalesProducts";
+// import { BuyProducts } from "../components/buyProducts/BuyProducts";
+// import { PaypalPayment } from "../components/buyProducts/PaypalPayment";
+// import { MessageSuccessPayment } from "../components/buyProducts/MessageSuccessPayment";
+// import { BuyShoppingCartProducts } from "../components/buyProducts/BuyShoppingCartProducts";
 
-  const [count, setCount] = useState(0);
 
-  const { loading, success, error, userData } = useSelector((state) => state.users.new);
-
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
-
-  useEffect(() => {
-    console.log(error);
-  }, [error])
-
+export function AppRouter() {
   return (<>
-    <div>
-      <a href="">Hola a todos</a>
-    </div>
 
-    <div>
-      <button onClick={() => {
-        console.log("Calling function 'newUser'");
-        dispatch(newUser());
-      }}>Increment</button>
+    <h2>AppRouter</h2>
 
-      <button onClick={() => {
-        setCount(count - 1)
-      }}>Decrement</button>
-    </div>
+    <Routes>
 
-    <h2>{count}</h2>
-  </>
-  )
+      <Route path="/Register" element={<Register />} />
+    {/* <Route path='*' element={<NotFound />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/SellTop" element={<SellTopProducts />} />
+      <Route path="/NewsProducts" element={<ListNewProducts />} />
+      <Route path="/OfferProducts" element={<SalesProducts />} />
+      <Route path="/login/*" element={<Login />} />
+      <Route path="/About/*" element={<About />} />
+      <Route path="/BuyProducts/:id_product" element={<BuyProducts />} />
+      <Route path="/PaypalPaymentOneProduct/:id_product/:count" element={<PaypalPayment />} />
+      <Route path="/PaypalPaymentShoppingCart" element={<BuyShoppingCartProducts />} />
+      <Route path="/PaypalPaymentOneProduct/MessageSuccess" element={<MessageSuccessPayment />} />
+      <Route path="/User/:id_user" element={<UserInformation />} />
+      <Route path="/UltimateUser/*" element={<UltimateUser />} /> */}
+    </Routes>
+  </>);
 }
-
-export default AppRouter
