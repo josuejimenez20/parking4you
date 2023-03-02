@@ -1,45 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from 'react-router-dom';
 
-import {Register } from "./components/register/Register";
-// import NotFound from "./not-found/NotFound";
-// import { NavBar } from "../components/shared/molecules/NavBar";
-// import { Home } from "../components/home/Home";
-// import { About } from "../components/about/About";
-
-// import { UserInformation } from "../components/user/UserInformation";
-// import { UltimateUser } from "../components/ultimateUser/UltimateUser";
-
-// import { SellTopProducts } from "../components/sellTops/SellTopProducts";
-// import { ListNewProducts } from "../components/ListNewProducts/ListNewProducts";
-// import { SalesProducts } from "../components/SalesProducts/SalesProducts";
-// import { BuyProducts } from "../components/buyProducts/BuyProducts";
-// import { PaypalPayment } from "../components/buyProducts/PaypalPayment";
-// import { MessageSuccessPayment } from "../components/buyProducts/MessageSuccessPayment";
-// import { BuyShoppingCartProducts } from "../components/buyProducts/BuyShoppingCartProducts";
+import { Home } from "./components/home/Home";
+import { Register } from "./components/register/Register";
 
 
 export function AppRouter() {
-  return (<>
 
-    <h2>AppRouter</h2>
+
+  const [loginVerification, setLoginVerification] = useState(false);
+
+
+  // Here We'll see if the user has the USER_STORAGE_KEY
+  // for can choose if We give him <Home/> or <Register/> view
+  useEffect(() => {
+    const userKey = localStorage.getItem("USER_STORAGE_KEY");
+    if (userKey) setLoginVerification(true);
+  }, [])
+
+  return (<>
 
     <Routes>
 
+      <Route path="/" element={loginVerification ? <Home /> : <Register />} />
+      <Route path="/Home/*" element={<Home />} />
       <Route path="/Register" element={<Register />} />
-    {/* <Route path='*' element={<NotFound />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/SellTop" element={<SellTopProducts />} />
-      <Route path="/NewsProducts" element={<ListNewProducts />} />
-      <Route path="/OfferProducts" element={<SalesProducts />} />
-      <Route path="/login/*" element={<Login />} />
-      <Route path="/About/*" element={<About />} />
-      <Route path="/BuyProducts/:id_product" element={<BuyProducts />} />
-      <Route path="/PaypalPaymentOneProduct/:id_product/:count" element={<PaypalPayment />} />
-      <Route path="/PaypalPaymentShoppingCart" element={<BuyShoppingCartProducts />} />
-      <Route path="/PaypalPaymentOneProduct/MessageSuccess" element={<MessageSuccessPayment />} />
-      <Route path="/User/:id_user" element={<UserInformation />} />
-      <Route path="/UltimateUser/*" element={<UltimateUser />} /> */}
+      {/* <Route path='*' element={<NotFound />} /> */}
     </Routes>
   </>);
 }
