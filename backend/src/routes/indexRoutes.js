@@ -5,12 +5,7 @@ const app = express();
 // Usuarios 
 app.use('/users', require('./users/usersRoutes'));
 
-
-// // Products
-// app.use('/api/products', require('./products/productsRoutes'));
-// // Login
-// app.use('/api/login', require('./login/loginRoutes'));
-// // Paypal
-// app.use('/api/paypal', require('./paypal/paypalRoutes'));
+// Reservations
+app.use('/reservations', require('./reservations/reservationsRoutes'));
 
 module.exports = app;
