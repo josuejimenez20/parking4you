@@ -41,15 +41,14 @@ body{
 
 .container{
 	background: #0d111e;
-	width: 350px;
-	height: 400px;
-	padding-bottom: 20px;
-	position: absolute;
+	padding-bottom: 100px;
+	position: fixed;
 	top:50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -40%);
 	margin: auto;
-  padding: 70px 50px 20px 50px;
+    padding: 40px;
+	border-radius: 20px;
 }
 
 
@@ -61,6 +60,7 @@ body{
 
 .fontLabel{
   color: white;
+  line-height: 1.5;
 }
 
 .fr{
@@ -127,3 +127,20 @@ body{
 }
 
 
+
+#inputs{
+	color: white;
+	display: block;
+	text-align: center;
+	padding-top: 1vh;
+	padding-bottom: 2vh;
+	cursor: pointer;
+}
+a{
+	color: white;
+	display: block;
+	text-align: center;
+	padding-top: 1vh;
+	padding-bottom: 2vh;
+	cursor: pointer;
+}

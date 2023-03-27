@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import { Home } from "./components/home/Home";
 import { Register } from "./components/register/Register";
+import { Login } from "./components/login/Login";
 
 
 export function AppRouter() {
@@ -14,7 +15,7 @@ export function AppRouter() {
   useEffect(() => {
     const userKey = localStorage.getItem("USER_STORAGE_KEY");
 
-    (userKey) ? navigate('/Home') : navigate('/Register');
+   // (userKey) ? navigate('/Home') : navigate('/Register');
 
   }, [])
 
@@ -25,6 +26,7 @@ export function AppRouter() {
       <Route path="/" element={<Home />} />
       <Route path="/Home/*" element={<Home />} />
       <Route path="/Register" element={<Register />} />
+      <Route path="/Login" element={<Login />} />      
       {/* <Route path='*' element={<NotFound />} /> */}
     </Routes>
   </>);
