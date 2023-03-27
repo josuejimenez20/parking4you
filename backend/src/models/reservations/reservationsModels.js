@@ -1,5 +1,7 @@
 const { conexion } = require('../../database/config');
 
+const { changeStateSpotModel } = require('../../models/spots/spotsModels');
+
 // TO GET ONLY THE NUMBERS OF REGISTERS YOU WANT
 
 // SELECT * FROM bookings
@@ -10,7 +12,7 @@ const { conexion } = require('../../database/config');
 
 
 function getAllReservationsModel() {
-    
+
     return new Promise((resolve, reject) => {
         conexion.query(
             `SELECT * FROM bookings;`,
@@ -25,13 +27,29 @@ function getAllReservationsModel() {
 function createNewReservationModel(data) {
     const {
         id_service, id_user, day_start, day_end,
-        hour_start, hour_end } = data;
+        id_spot, hour_start, hour_end } = data;
+
+    // We removed the availability of the spot.
+    changeStateSpotModel(id_spot, false);
+
+    //     START TRANSACTION;
+
+    // -- Seleccionar el registro a actualizar y bloquearlo para lectura y escritura
+    // SELECT * FROM spots sp WHERE sp.id_spot = '1' FOR UPDATE;
+
+    // -- Realizar las operaciones necesarias dentro de la transacción
+    // UPDATE spots sp 
+    // SET sp.state = '1' 
+    // WHERE sp.id_spot = '1';
+
+    // -- Confirmar las operaciones con COMMIT
+    // COMMIT;
 
     return new Promise((resolve, reject) => {
         conexion.query(
             `INSERT INTO bookings
-            (id_services, id_user, day_start, day_end, hour_start, 
-            hour_end) VALUES ('${id_service}', '${id_user}', 
+            (id_services, id_user, id_spot, day_start, day_end, hour_start, 
+            hour_end) VALUES ('${id_service}', '${id_user}', '${id_spot}', 
             '${day_start}', '${day_end}', '${hour_start}', '${hour_end}');`,
             function (error, result, field) {
                 if (error)

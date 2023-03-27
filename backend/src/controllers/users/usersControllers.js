@@ -1,6 +1,6 @@
 const {
     createNewUserServices,
-    verificateLoginUserServices } = require('../../services/usersServices');
+    verificateLoginUserServices } = require('../../services/users/usersServices');
 
 
 const createNewUserController = async (req, res) => {

@@ -3,7 +3,7 @@ const uuid = require('uuid');
 const {
     createNewUserModels,
     verificateCreateNewUserModels,
-    verificateLoginUserModels } = require("../models/users/usersModels");
+    verificateLoginUserModels } = require("../../models/users/usersModels");
 
 const createNewUserServices = async (data) => {
 
