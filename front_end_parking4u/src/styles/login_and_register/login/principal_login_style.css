@@ -36,11 +36,15 @@
 }
 
 
-a{
+#link_login{
 	color: white;
 	display: block;
 	text-align: center;
 	padding-top: 1vh;
 	padding-bottom: 2vh;
 	cursor: pointer;
+}
+
+#error-login{
+	color: red;
 }

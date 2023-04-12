@@ -16,6 +16,41 @@ function getIdSpotByNumberSpotModel(number_spot) {
     })
 }
 
+
+function verificateStatusSpotModel(id_spot) {
+
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `
+            SELECT sp.state 
+            FROM spots sp 
+            WHERE sp.id_spot = "${id_spot}" AND sp.state = "1";    
+            `,
+            function (error, result, field) {
+                if (error)
+                    return reject(error);
+                return resolve(result);
+            })
+    })
+}
+function getRandomIdSpotAvailableModel() {
+
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `
+            SELECT sp.id_spot 
+            FROM spots sp 
+            WHERE sp.state = "1" 
+            LIMIT 1;    
+            `,
+            function (error, result, field) {
+                if (error)
+                    return reject(error);
+                return resolve(result);
+            })
+    })
+}
+
 function changeStateSpotModel(id_spot, stateChange) {
 
     const status = stateChange ? 1 : 0;
@@ -54,8 +89,10 @@ function verificateStatusSpotModel(id_spot) {
 
 
 
+
 module.exports = {
     getIdSpotByNumberSpotModel,
+    getRandomIdSpotAvailableModel,
     changeStateSpotModel,
     verificateStatusSpotModel,
 }

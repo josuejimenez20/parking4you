@@ -1,6 +1,7 @@
 
 const { getAllReservationsServices,
-    createNewReservationService } = require('../../services/reservations/reservationsServices');
+    createNewReservationService, getExcludeTimesByDayServices
+} = require('../../services/reservations/reservationsServices');
 
 const getAllReservationsController = async (req, res) => {
     try {
@@ -41,7 +42,24 @@ const createNewReservationController = async (req, res) => {
     }
 }
 
+const getExcludeTimesByDayControllers = async (req, res) => {
+
+    try {
+        const day =  req.query.date_yyyymmdd;
+
+        let response = await getExcludeTimesByDayServices(day);
+
+        return res.status(200).json({
+            response
+        });
+
+    } catch (error) {
+        return error;
+    }
+}
+
 module.exports = {
     getAllReservationsController,
-    createNewReservationController
+    createNewReservationController,
+    getExcludeTimesByDayControllers
 }

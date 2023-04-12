@@ -59,7 +59,25 @@ function createNewReservationModel(data) {
     })
 }
 
+
+
+function getExcludeTimesByDayModels(day) {
+
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `SELECT bk.hour_start, bk.hour_end 
+            FROM bookings bk 
+            WHERE bk.day_start = "${day}";`,
+            function (error, result, field) {
+                if (error)
+                    return reject(error);
+                return resolve(result);
+            })
+    })
+}
+
 module.exports = {
     getAllReservationsModel,
-    createNewReservationModel
+    createNewReservationModel,
+    getExcludeTimesByDayModels
 }

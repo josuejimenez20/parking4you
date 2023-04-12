@@ -13,9 +13,9 @@ export const loginUser = (dataForm) => async (dispatch) => {
 
         dispatch(fetchLoginUser());
 
-        const response = await axios.post('http://localhost:3000/api/v1/users/login_verificate', dataForm);
+        const {data} = await axios.post('http://localhost:3000/api/v1/users/login_verificate', dataForm);
 
-        dispatch(fetchLoginUserSuccess(response));
+        dispatch(fetchLoginUserSuccess(data.response));
 
     } catch (error) {
         

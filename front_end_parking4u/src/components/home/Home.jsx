@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { HomeRoutes } from '../../routes/home/HomeRoutes';
 
-import "../../styles/login/home/main_page_style.css";
+import "../../styles/home/main_page_style.css";
 
 
 
@@ -23,7 +23,7 @@ export function Home() {
             data: false,
             end: false
         })
-        navigate('Book');
+        navigate('Reservation');
     }
 
     return (

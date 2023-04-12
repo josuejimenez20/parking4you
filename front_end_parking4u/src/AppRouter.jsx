@@ -15,7 +15,7 @@ export function AppRouter() {
   useEffect(() => {
     const userKey = localStorage.getItem("USER_STORAGE_KEY");
 
-   // (userKey) ? navigate('/Home') : navigate('/Register');
+   (userKey) ? navigate('/Home') : navigate('/Login');
 
   }, [])
 

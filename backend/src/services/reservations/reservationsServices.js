@@ -1,9 +1,10 @@
 
 const { getAllReservationsModel,
-    createNewReservationModel } = require('../../models/reservations/reservationsModels');
+    createNewReservationModel, getExcludeTimesByDayModels
+} = require('../../models/reservations/reservationsModels');
 
-const { getIdSpotByNumberSpotServices,
-    verificateStatusSpotServices } = require('../../services/spots/spotsServices');
+const { verificateStatusSpotServices,
+    getRandomIdSpotAvailableServices } = require('../../services/spots/spotsServices');
 
 const getAllReservationsServices = async () => {
 
@@ -19,14 +20,17 @@ const createNewReservationService = async (data) => {
 
     try {
 
-        let response = {};
+        // Get the first avvaible spot found 
+        //and chooose one and this will be "id_random_spot_avaible"
 
-        let id_spot_db = await getIdSpotByNumberSpotServices(data.number_spot);
+        let id_random_spot_avaible = await getRandomIdSpotAvailableServices();
+
+        let response = {};
 
         // Add a new property "id_spot" to object "data" with 
         // value of id_spot We found.
 
-        data.id_spot = id_spot_db[0].id_spot;
+        data.id_spot = id_random_spot_avaible[0].id_spot;
 
         let status_spot = await verificateStatusSpotServices(data.id_spot);
 
@@ -34,9 +38,9 @@ const createNewReservationService = async (data) => {
             return [];
         }
 
-        const {insertId} = await createNewReservationModel(data);
+        const { insertId } = await createNewReservationModel(data);
 
-         response = {
+        response = {
             insertId
         }
 
@@ -47,7 +51,20 @@ const createNewReservationService = async (data) => {
     }
 }
 
+const getExcludeTimesByDayServices = async (day) => {
+
+    try {
+
+        let response = getExcludeTimesByDayModels(day);
+
+        return response;
+    } catch (error) {
+        return error;
+    }
+}
+
 module.exports = {
     getAllReservationsServices,
-    createNewReservationService
+    createNewReservationService,
+    getExcludeTimesByDayServices
 }
