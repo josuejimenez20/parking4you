@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { HomeRoutes } from '../../routes/home/HomeRoutes';
 
 import "../../styles/home/main_page_style.css";
+import { logOutDataLocalStorage } from '../../helpers/login/logOutDataLocalStorage';
 
 
 
@@ -26,12 +27,21 @@ export function Home() {
         navigate('Reservation');
     }
 
+    const logOut = () => {
+        logOutDataLocalStorage();
+        navigate('/Login');
+    }
+
     return (
         <>
             <header>
                 <div id="rectangulo">
                     <button id="logoblanco"></button>
-                    <button id="login">Iniciar Sesion</button>
+                    <button id="login"
+                    onClick={() => {
+                        logOut();
+                    }}
+                    >Cerrar Sesion</button>
                 </div>
             </header>
             <div id="weAre">
@@ -53,7 +63,7 @@ export function Home() {
                 > Reservar </button>
                 <div id="clickalbot" style={{ color: colorsChange.bookButton ? "green" : "" }}>Click al boton de reserva</div>
                 <div id="disfrutatu" style={{ color: colorsChange.end ? "green" : "" }}>Disfruta tu lugar</div>
-                <div id="ingresatus" style={{ color: colorsChange.data ? "green" : "" }}>Ingresa tus datos</div>
+                <div id="ingresatus" style={{ color: colorsChange.data ? "green" : "" }}>Ingresa tus datos y paga</div>
                 <div id="iniciasesi" style={{ color: colorsChange.login ? "green" : "" }}>Inicia Sesion</div>
                 <div id="linea6"></div>
                 <div id="valo">1</div>

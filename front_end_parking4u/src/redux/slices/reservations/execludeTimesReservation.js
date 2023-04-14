@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     loading: false,
     error: null,
-    success: false,
+    success: null,
     execludeTimesData: []
 };
 
@@ -25,13 +25,15 @@ export const execludeTimesReservationSlice = createSlice({
         fetchExecludeTimesReservationFailure: (state, action) => {
             state.error = action.payload;
             state.loading = false;
-            state.success = false;
-        }
+            state.success = null;
+        }, 
     }
 });
+
+
 
 export const {
     fetchExecludeTimesReservation,
     fetchExecludeTimesReservationSuccess,
-    fetchExecludeTimesReservationFailure
+    fetchExecludeTimesReservationFailure,
 } = execludeTimesReservationSlice.actions;

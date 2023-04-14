@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { PayPalButton } from "./PayPalButton";
-import { fetchPreReservation } from "../../../../../redux/slices/reservations/newReservation";
-import { newReservation } from "../../../../../redux/actions/reservations/newReservation";
-import { getPrice } from "../../../../../helpers/reservations/PayPalReservation/prices";
-import "../../../../../styles/home/sub_components_styles/payment_reservation_styles.css";
+import { ToastMessage } from "../../../common/alerts/ToastMessage";
+import { newReservation } from "../../../../redux/actions/reservations/newReservation";
+import { getPrice } from "../../../../helpers/reservations/PayPalReservation/prices";
+import "../../../../styles/home/sub_components_styles/payment_reservation_styles.css";
 
 export function Payment_Reservation() {
 
@@ -13,6 +13,7 @@ export function Payment_Reservation() {
     const navigate = useNavigate();
 
     const [amountReservation, setAmountReservation] = useState();
+    const [shouldMakePayment, setShouldMakePayment] = useState(true); // initialize to true
 
     const { loading, success, error,
         reservationData, preReservationData
@@ -29,13 +30,18 @@ export function Payment_Reservation() {
         // Send to created the new reservation
         // in backend
 
-        dispatch(newReservation(preReservationData, paymentData));
-
-        // It migth go to view "Reservations" 
-        // of client
-
-        navigate('/Home');
+        dispatch(newReservation(preReservationData, paymentData)).then(() => {
+            setShouldMakePayment(true); // set to true if successful
+        }).catch(() => {
+            setShouldMakePayment(false); // set to false if there is an error
+        });
     }
+
+    useEffect(() => {
+        if (success === true) {
+            navigate('Reservation_Information', { replace: true })
+        }
+    }, [success])
 
     // SET RESERVARTION'S PRICE
 
@@ -50,10 +56,17 @@ export function Payment_Reservation() {
 
     return (<>
         <div id="payment">
+            {
+                error ?
+                    <ToastMessage message={error} type={'error'} />
+                    :
+                    <></>
+            }
             <h2>PAGO CON PAYPAL</h2>
             <PayPalButton
                 amount={amountReservation}
                 actionEndPayment={createNewReservation}
+                disabled={!shouldMakePayment} // disable if shouldMakePayment is false
             />
         </div>
     </>)

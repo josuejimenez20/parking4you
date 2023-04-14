@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import { loginUser } from "../../redux/actions/users/loginUser";
-
+import { ToastMessage } from "../common/alerts/ToastMessage";
 import { registerDataLocalStorage } from "../../helpers/login/registerDataLocalStorage";
 
 import "../../styles/login_and_register/login/principal_login_style.css";
@@ -24,7 +23,6 @@ export function Login() {
             password: data.target.password.value
         }
         dispatch(loginUser(formData))
-
     }
 
     useEffect(() => {
@@ -33,13 +31,6 @@ export function Login() {
             navigate('/Home', { replace: true });
         }
     }, [userData])
-
-    useEffect(() => {
-        if (success) {
-            navigate("/Home")
-        }
-    }, [success])
-
 
     return (
         <>
@@ -86,7 +77,10 @@ export function Login() {
                         }}> Regístrese </a>
                     </div>
                     {
-                        error ? <h3 id="error-login">{error}</h3> : <></>
+                        error ?
+                            <ToastMessage message={error} type={'error'} />
+                            :
+                            <></>
                     }
                 </form>
             </div>

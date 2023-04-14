@@ -23,6 +23,7 @@ export const newUser = (dataForm) => async (dispatch) => {
             dispatch(fetchNewFailure("Ususario ya existente"));
             return;
         }
-        dispatch(fetchNewFailure(error.response.data.msg));
+        
+        dispatch(fetchNewFailure("Error al registrarse"));
     }
 }

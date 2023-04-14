@@ -23,7 +23,7 @@ export const loginUser = (dataForm) => async (dispatch) => {
             return dispatch(fetchLoginFailure("Usuario no encontrado"))
         }
         
-        dispatch(fetchLoginFailure(error));
+        dispatch(fetchLoginFailure("Error al acceder a su cuenta"));
 
     }
 }
