@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Calendar_reservation } from "./Calendar_reservation";
-import { getExecludeTimesReservation } from '../../../../redux/actions/reservations/getExecludeTimesReservation';
 import { getIdUser } from '../../../../helpers/users/getIdUser';
 import { fetchPreReservation } from '../../../../redux/slices/reservations/newReservation';
-import { converCalendarDay, convertCalendarData } from '../../../../helpers/reservations/converCalendarData';
-import { convertSetExcludeTimes } from '../../../../helpers/reservations/convertSetExcludeTimes';
+import { convertCalendarData } from '../../../../helpers/reservations/converCalendarData';
 import "../../../../styles/home/sub_components_styles/reservation_style.css";
 
 export function Form_reservation() {
 
-    // BRING FROM HELPERS FUNCTION
-    // SET excludeTimes WITH STORE
-
-    const [excludeTimes, setExcludeTimes] = useState([
-        new Date().setHours(9, 0),
-        new Date().setHours(10, 0),
-        new Date().setHours(13, 0),
-    ]);
+    const excludeTimes = [
+        new Date().setHours(0, 0),
+        new Date().setHours(1, 0),
+        new Date().setHours(2, 0),
+        new Date().setHours(3, 0),
+        new Date().setHours(4, 0),
+        new Date().setHours(5, 0),
+        new Date().setHours(6, 0),
+        new Date().setHours(22, 0),
+        new Date().setHours(23, 0),
+        new Date().setHours(24, 0),
+    ];
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { loading: loadingExecludeTimes, success: successExecludeTimes,
-        error: errorExecludeTimes, execludeTimesData
-    } = useSelector((state) => state.reservations.execludeTimes);
+    // const { loading: loadingExecludeTimes, success: successExecludeTimes,
+    //     error: errorExecludeTimes, execludeTimesData
+    // } = useSelector((state) => state.reservations.execludeTimes);
 
     // CONVERT CALENDAR DATA
 
@@ -35,22 +37,22 @@ export function Form_reservation() {
     //SEND TO CALL THE FUNCTION THAT WILL BRING 
     // THE HOURS AND SET IN "EXCLUDETIMES"
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const day = (converCalendarDay(startDate));
+    //     const day = (converCalendarDay(startDate));
 
-        dispatch(getExecludeTimesReservation(day));
-    }, [startDate])
+    //     dispatch(getExecludeTimesReservation(day));
+    // }, [startDate])
 
-    useEffect(() => {
-        // Here We set whit "SETEXECLUDETIMES"
-        // with we got in the variable "times" 
+    // useEffect(() => {
+    //     // Here We set whit "SETEXECLUDETIMES"
+    //     // with we got in the variable "times" 
 
-        const times = convertSetExcludeTimes(execludeTimesData);
+    //     const times = convertSetExcludeTimes(execludeTimesData);
 
-        setExcludeTimes(times);
+    //     setExcludeTimes(times);
 
-    }, [execludeTimesData])
+    // }, [execludeTimesData])
 
     // CREATE A NEW RESERVATION TO BACKEND
 
@@ -92,7 +94,6 @@ export function Form_reservation() {
 
     return (
         <>
-
             <div id="reservation">
                 <Calendar_reservation
                     startDate={startDate}
