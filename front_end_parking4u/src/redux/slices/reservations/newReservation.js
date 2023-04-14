@@ -26,12 +26,12 @@ export const newReservationSlice = createSlice({
         fetchReservationFailure: (state, action) => {
             state.error = action.payload;
             state.loading = false;
-            state.success = false;
+            state.success = null;
         },
         fetchPreReservation: (state, action) => {
             state.loading = false,
                 state.error = false,
-                state.success = true;
+                state.success = null;
             state.preReservationData = action.payload;
         },
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { ToastMessage } from "../common/alerts/ToastMessage";
 import { newUser } from "../../redux/actions/users/newUser";
 
 import LogoBlanco from "../../assets/LogoBlanco.png";
@@ -119,21 +119,19 @@ export function Register() {
                     <input type="Submit" name="Submit" className="submit" />
                 </div>
 
-                {error
-                    ? <h2 id="error_register">{error}</h2>
-                    : <></>}
-
                 <div id="links">
                     <a id="link_login" onClick={() => {
                         navigate('/Login')
                     }}> Ya tengo una cuenta </a>
                 </div>
-
-
-
+                {
+                    error ?
+                        <ToastMessage message={error} type={
+                            error === "Ususario ya existente" ? 'info' : 'error'} />
+                        :
+                        <></>
+                }
             </form>
-
-
         </div>
     </>)
 }
