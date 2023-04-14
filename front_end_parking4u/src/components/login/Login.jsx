@@ -35,15 +35,11 @@ export function Login() {
     }, [userData])
 
     useEffect(() => {
-        console.log(success)
         if (success) {
             navigate("/Home")
         }
     }, [success])
 
-    useEffect(() => {
-        console.log(error)
-    }, [error])
 
     return (
         <>

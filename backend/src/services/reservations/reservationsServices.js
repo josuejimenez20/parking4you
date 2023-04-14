@@ -1,10 +1,14 @@
 
 const { getAllReservationsModel,
-    createNewReservationModel, getExcludeTimesByDayModels
+    createNewReservationModel, getExcludeTimesByDayModels,
+    deleteReservationByIdModel
 } = require('../../models/reservations/reservationsModels');
 
 const { verificateStatusSpotServices,
     getRandomIdSpotAvailableServices } = require('../../services/spots/spotsServices');
+
+const { createNewReservationPaymentService }
+    = require('../../services/reservation_payments/reservation_paymentServices');
 
 const getAllReservationsServices = async () => {
 
@@ -25,6 +29,10 @@ const createNewReservationService = async (data) => {
 
         let id_random_spot_avaible = await getRandomIdSpotAvailableServices();
 
+        if (id_random_spot_avaible.length === 0) {
+            return [];
+        }
+
         let response = {};
 
         // Add a new property "id_spot" to object "data" with 
@@ -38,15 +46,26 @@ const createNewReservationService = async (data) => {
             return [];
         }
 
-        const { insertId } = await createNewReservationModel(data);
+        const {insertId} = await createNewReservationModel(data);
+
+        // SENT booking's id that We got from 
+        // "responseCreateNewReservation" and the
+        // paypal payment data
+
+        // HERE WE SET THE NEW booking_payment
+
+        const responseCreateNewReservationPayment = await createNewReservationPaymentService(insertId, data);
+
+        console.log(responseCreateNewReservationPayment);
 
         response = {
-            insertId
+            msg: "new reservation created"
         }
 
         return response;
 
     } catch (error) {
+
         return error
     }
 }
@@ -63,8 +82,20 @@ const getExcludeTimesByDayServices = async (day) => {
     }
 }
 
+const deleteReservationByIdServices = async (id_booking) => {
+    
+    try {
+
+        let reponse = await deleteReservationByIdModel(id_booking);
+        
+    } catch (error) {
+        return error;
+    }
+}
+
 module.exports = {
     getAllReservationsServices,
     createNewReservationService,
-    getExcludeTimesByDayServices
+    getExcludeTimesByDayServices,
+    deleteReservationByIdServices
 }
