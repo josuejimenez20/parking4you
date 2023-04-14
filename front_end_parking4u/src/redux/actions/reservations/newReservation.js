@@ -5,22 +5,22 @@ import {
     fetchReservationFailure
 } from "../../slices/reservations/indexReservations";
 
-export const newReservation = (formData) => async (dispatch) => {
+export const newReservation = (formData, paymentData) => async (dispatch) => {
+
+    const formAndPaymentData = Object.assign({}, formData, paymentData);
 
     try {
 
         dispatch(fetchNewReservation());
         
-        const {data} = await axios.post('http://localhost:3000/api/v1/reservations/new', formData);
+        const response = await axios.post('http://localhost:3000/api/v1/reservations/new', formAndPaymentData);
 
-        dispatch(fetchNewReservationSuccess(data.response));
+        dispatch(fetchNewReservationSuccess("Reservacion hecha"));
 
     } catch (error) {
 
-        console.log(error);
-
         if(error.response.status == 409){
-            return dispatch(fetchReservationFailure("Horas o lugar ya ocupados, por favor intentar nuevamente"))
+            return dispatch(fetchReservationFailure("Horas o lugares ya ocupados, por favor intente nuevamente"))
         }
 
         dispatch(fetchReservationFailure("Error al reservar, por favor intente nuevamente"));

@@ -40,10 +40,6 @@ export function Register() {
         dispatch(newUser(formData));
     }
 
-    useEffect(() => {
-        console.log(error);
-    }, [error])
-
     return (<>
         <header>
             <div id="rectangulo">

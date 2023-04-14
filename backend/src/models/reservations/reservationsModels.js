@@ -76,8 +76,24 @@ function getExcludeTimesByDayModels(day) {
     })
 }
 
+
+function deleteReservationByIdModel(id_booking) {
+
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `DELETE FROM bookings bk 
+            WHERE bk.id_booking = "${id_booking}";`,
+            function (error, result, field) {
+                if (error)
+                    return reject(error);
+                return resolve(result);
+            })
+    })
+}
+
 module.exports = {
     getAllReservationsModel,
     createNewReservationModel,
-    getExcludeTimesByDayModels
+    getExcludeTimesByDayModels,
+    deleteReservationByIdModel
 }

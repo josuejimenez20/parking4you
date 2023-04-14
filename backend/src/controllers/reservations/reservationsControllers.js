@@ -26,6 +26,8 @@ const createNewReservationController = async (req, res) => {
 
         let response = await createNewReservationService(dataBody);
 
+        console.log(response);
+
         if (response.length === 0)
             return res.status(409).json({
                 msg: "Hubo un problema la agregar el lugar, intentar nuevamente por favor."

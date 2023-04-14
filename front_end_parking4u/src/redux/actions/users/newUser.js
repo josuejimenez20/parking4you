@@ -7,8 +7,6 @@ import {
 
 export const newUser = (dataForm) => async (dispatch) => {
 
-    console.log(dataForm);
-
     try {
 
         dispatch(fetchNewUser());

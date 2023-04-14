@@ -8,6 +8,9 @@ const newReservationValidate = [
     check("day_end").exists().not().isEmpty(),
     check("hour_start").exists().not().isEmpty(),
     check("hour_end").exists().not().isEmpty(),
+    check("order_paypal_id").exists().not().isEmpty(),
+    check("payer_paypal_id").exists().not().isEmpty(),
+    check("amount").exists().not().isEmpty(),
 
     (req, res, next) => {
         validateResult(req, res, next)

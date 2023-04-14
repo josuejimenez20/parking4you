@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { PayPalButton } from "./PayPalButton";
+import { fetchPreReservation } from "../../../../../redux/slices/reservations/newReservation";
 import { newReservation } from "../../../../../redux/actions/reservations/newReservation";
 import { getPrice } from "../../../../../helpers/reservations/PayPalReservation/prices";
 import "../../../../../styles/home/sub_components_styles/payment_reservation_styles.css";
@@ -19,16 +20,21 @@ export function Payment_Reservation() {
 
     const createNewReservation = (data) => {
 
-        // With the data save datapayment in 
-        // the Data Base
-        console.log(data);
+        const paymentData = {
+            amount: amountReservation,
+            order_paypal_id: data.ORDER_ID,
+            payer_paypal_id: data.PAYER_ID
+        };
 
-        dispatch(newReservation(preReservationData));
+        // Send to created the new reservation
+        // in backend
+
+        dispatch(newReservation(preReservationData, paymentData));
 
         // It migth go to view "Reservations" 
         // of client
-        navigate('/Home');
 
+        navigate('/Home');
     }
 
     // SET RESERVARTION'S PRICE
