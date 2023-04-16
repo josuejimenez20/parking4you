@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastMessage } from "../common/alerts/ToastMessage";
@@ -19,7 +19,9 @@ export function Register() {
     useEffect(() => {
         if (success) {
             if (success) {
-                registerDataLocalStorage(userData.uniqueUserId);
+                registerDataLocalStorage(userData.uniqueUserId, 'USER_STORAGE_KEY');
+                const user_name = userData.name + " " + userData.last_name + " " + userData.second_last_name;
+                registerDataLocalStorage(user_name, 'USER_NAME');
                 navigate('/Home', { replace: true });
             }
         }

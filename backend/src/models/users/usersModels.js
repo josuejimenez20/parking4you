@@ -43,7 +43,8 @@ function verificateLoginUserModels(data) {
 
     return new Promise((resolve, reject) => {
         conexion.query(
-            `SELECT id_user AS uniqueUserId
+            `SELECT id_user AS uniqueUserId, name,
+            last_name, second_last_name
             FROM users as us 
             WHERE us.email = "${email}" 
             AND us.password = "${password}" `,

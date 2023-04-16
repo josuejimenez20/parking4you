@@ -5,7 +5,7 @@ import { Calendar_reservation } from "./Calendar_reservation";
 import { getIdUser } from '../../../../helpers/users/getIdUser';
 import { fetchPreReservation } from '../../../../redux/slices/reservations/newReservation';
 import { convertCalendarData } from '../../../../helpers/reservations/converCalendarData';
-import "../../../../styles/home/sub_components_styles/reservation_style.css";
+import "../../../../styles/home/sub_components_styles/form_reservation_style.css";
 
 export function Form_reservation() {
 
@@ -107,13 +107,17 @@ export function Form_reservation() {
                         e.preventDefault()
                         handleNewReservation(e)
                     }}>
-                    <label>Servicios:</label>
+                    <br />
+                    <h2 id='title_service'>Servicios: </h2>
+                    <br />
                     <select id="services" name="services">
                         <option value="1">Estacionamiento</option>
                         <option value="2">Autolavado</option>
                         <option value="3">Estacionamiento y Autolavado</option>
                     </select>
-                    <input type="Submit" name="Submit" className="submit" />
+                    <br />
+                    <br />
+                    <input type="Submit" name="Submit" className="submit_reservaiton" />
                 </form>
             </div>
         </>

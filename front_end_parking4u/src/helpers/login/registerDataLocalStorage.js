@@ -1,3 +1,3 @@
-export const registerDataLocalStorage = (dataUser) => {
-    localStorage.setItem('USER_STORAGE_KEY', JSON.stringify(dataUser));
+export const registerDataLocalStorage = (data, key) => {
+    localStorage.setItem(key, JSON.stringify(data));
 }
