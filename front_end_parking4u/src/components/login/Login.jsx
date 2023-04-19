@@ -28,8 +28,16 @@ export function Login() {
     useEffect(() => {
         if (success) {
             registerDataLocalStorage(userData[0].uniqueUserId, 'USER_STORAGE_KEY');
+
             const user_name = userData[0].name + " " + userData[0].last_name + " " + userData[0].second_last_name;
             registerDataLocalStorage(user_name, 'USER_NAME');
+
+            if (userData[0].userAdministrative) {
+                registerDataLocalStorage(userData[0].userAdministrative, 'USER_STORAGE_KEY_ADMINISTRATIVE');
+                navigate('/Administrative', { replace: true });
+                return;
+            }
+
             navigate('/Home', { replace: true });
         }
     }, [userData])

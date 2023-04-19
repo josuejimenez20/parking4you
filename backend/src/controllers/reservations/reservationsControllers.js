@@ -1,6 +1,7 @@
 
 const { getAllReservationsServices,
-    createNewReservationService, getExcludeTimesByDayServices
+    createNewReservationService, getExcludeTimesByDayServices,
+    getReservationsByIdUserServices
 } = require('../../services/reservations/reservationsServices');
 
 const getAllReservationsController = async (req, res) => {
@@ -26,8 +27,6 @@ const createNewReservationController = async (req, res) => {
 
         let response = await createNewReservationService(dataBody);
 
-        console.log(response);
-
         if (response.length === 0)
             return res.status(409).json({
                 msg: "Hubo un problema la agregar el lugar, intentar nuevamente por favor."
@@ -47,7 +46,7 @@ const createNewReservationController = async (req, res) => {
 const getExcludeTimesByDayControllers = async (req, res) => {
 
     try {
-        const day =  req.query.date_yyyymmdd;
+        const day = req.query.date_yyyymmdd;
 
         let response = await getExcludeTimesByDayServices(day);
 
@@ -60,8 +59,25 @@ const getExcludeTimesByDayControllers = async (req, res) => {
     }
 }
 
+const getReservationsByIdUserControllers = async (req, res) => {
+
+    try {
+
+        let id_user = req.params.userId;
+
+        let response = await getReservationsByIdUserServices(id_user);
+
+        return res.status(200).json({
+            response
+        })
+    } catch (error) {
+        return error;
+    }
+}
+
 module.exports = {
     getAllReservationsController,
     createNewReservationController,
-    getExcludeTimesByDayControllers
+    getExcludeTimesByDayControllers,
+    getReservationsByIdUserControllers
 }

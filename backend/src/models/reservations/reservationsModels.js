@@ -2,20 +2,34 @@ const { conexion } = require('../../database/config');
 
 const { changeStateSpotModel } = require('../../models/spots/spotsModels');
 
-// TO GET ONLY THE NUMBERS OF REGISTERS YOU WANT
-
-// SELECT * FROM bookings
-// LIMIT 2 OFFSET 0; -- Devuelve las primeras 2 filas
-
-// SELECT * FROM bookings
-// LIMIT 2 OFFSET 2; -- Devuelve las siguientes 2 filas
-
-
 function getAllReservationsModel() {
 
     return new Promise((resolve, reject) => {
         conexion.query(
             `SELECT * FROM bookings;`,
+            function (error, result, field) {
+                if (error)
+                    return reject(error);
+                return resolve(result);
+            })
+    })
+}
+
+function getReservationsByIdUserModels(userId) {
+
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `SELECT 
+            bks.day_start, bks.day_end, bks.hour_start, bks.hour_end,
+            us.name, us.last_name, us.second_last_name, us.telephone,
+            sp.number_spot
+            FROM bookings bks 
+            INNER JOIN users us
+            ON bks.id_user = us.id_user
+            INNER JOIN spots sp 
+            ON bks.id_spot = sp.id_spot
+            WHERE us.id_user = "${userId}";
+            `,
             function (error, result, field) {
                 if (error)
                     return reject(error);
@@ -32,19 +46,6 @@ function createNewReservationModel(data) {
     // We removed the availability of the spot.
     changeStateSpotModel(id_spot, false);
 
-    //     START TRANSACTION;
-
-    // -- Seleccionar el registro a actualizar y bloquearlo para lectura y escritura
-    // SELECT * FROM spots sp WHERE sp.id_spot = '1' FOR UPDATE;
-
-    // -- Realizar las operaciones necesarias dentro de la transacción
-    // UPDATE spots sp 
-    // SET sp.state = '1' 
-    // WHERE sp.id_spot = '1';
-
-    // -- Confirmar las operaciones con COMMIT
-    // COMMIT;
-
     return new Promise((resolve, reject) => {
         conexion.query(
             `INSERT INTO bookings
@@ -58,8 +59,6 @@ function createNewReservationModel(data) {
             })
     })
 }
-
-
 
 function getExcludeTimesByDayModels(day) {
 
@@ -93,6 +92,7 @@ function deleteReservationByIdModel(id_booking) {
 
 module.exports = {
     getAllReservationsModel,
+    getReservationsByIdUserModels,
     createNewReservationModel,
     getExcludeTimesByDayModels,
     deleteReservationByIdModel

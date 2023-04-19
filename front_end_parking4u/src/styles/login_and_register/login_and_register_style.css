@@ -32,12 +32,12 @@
     background:  transparent;
   }
 
-/* body{
+body{
   background: url(../../assets/img_estacionamiento.jpg) no-repeat center fixed;
   background-size: cover;
   background-color: #465eac;
   background-blend-mode:darken;
-} */
+}
 
 .container{
 	background: #0d111e;
