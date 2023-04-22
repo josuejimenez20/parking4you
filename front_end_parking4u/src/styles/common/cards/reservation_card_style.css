@@ -4,11 +4,13 @@
     min-height: 100vh;
     background: #131313;
 }
-.container{
+.container_info_pablo{
     position: relative;
 }
-.container .card{
+.container_info_pablo .card{
     position:relative;
+    margin: 2% 0 2%;
+    left: 43%;
     width: 320px;
     height: 450px;
     background: #ffffff;
@@ -16,7 +18,7 @@
     overflow: hidden;
 
 }
-.container .card:before{
+.container_info_pablo .card:before{
     content: '';
     position: absolute;
     top: 0;
@@ -27,12 +29,12 @@
     clip-path: circle(150px at 80% 20%);
     transition: 0.5s ease-in-out;
 }
-.container .card:hover::before{
+.container_info_pablo .card:hover::before{
     clip-path: circle(300px at 80% -20%);
 }
 
 
-.container .card:after{
+.container_info_pablo .card:after{
     content: 'Parking 4U';
     position: absolute;
     top: 55%;
@@ -44,7 +46,7 @@
     color:  #e7e7e7;
     transition: 0.5s ease-in-out;
 }
-.container .card .imageBox{
+.container_info_pablo .card .imageBox{
     position: absolute;
     top: 43%;
     transform:  translateY(-50%);
@@ -54,14 +56,14 @@
     transition: 0.7s;
 }
 
-.container .card .imageBox img{
+.container_info_pablo .card .imageBox img{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -80%);
     width: 220px;
 }
-.container .card .contentBox{
+.container_info_pablo .card .contentBox{
     position: absolute;
     bottom: 3%;
     width: 100%;
@@ -70,26 +72,25 @@
     transition: 0.7s;
     z-index: 10;
 }
-.container .card .contentBox h2{
+.container_info_pablo .card .contentBox h2{
     position: relative;
     bottom: 5%;
     font-weight: 600;
     letter-spacing: 1px;
     color: #000000;
 }
-.container .card .contentBox .price,
-.container .card .contentBox .amount,
-.container .card .contentBox .description
+.container_info_pablo .card .contentBox .price,
+.container_info_pablo .card .contentBox .amount,
+.container_info_pablo .card .contentBox .description
 {
-    display: flex;
     bottom: 20%;
     justify-content: center;
     align-items: center;
     transition: 0.5s;
 }
-.container .card .contentBox .price h3,
-.container .card .contentBox .amount h3,
-.container .card .contentBox .description h3{
+.container_info_pablo .card .contentBox .price h3,
+.container_info_pablo .card .contentBox .amount h3,
+.container_info_pablo .card .contentBox .description h3{
     
     color: #000000;
     font-weight: 300;
@@ -98,9 +99,9 @@
     letter-spacing: 2px;
     margin-right: 10px;
 }
-.container .card .contentBox .price span,
-.container .card .contentBox .amount span,
-.container .card .contentBox .description span{
+.container_info_pablo .card .contentBox .price span,
+.container_info_pablo .card .contentBox .amount span,
+.container_info_pablo .card .contentBox .description span{
     
     text-align: center;
     line-height: 23px;

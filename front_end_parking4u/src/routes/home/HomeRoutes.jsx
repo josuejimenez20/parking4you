@@ -13,7 +13,7 @@ export function HomeRoutes() {
     <Routes>
 
       {/* We get in "Home/ and We show about" */}
-      <Route path="/" element={<About />} />
+      <Route path="/" element={<Reservation_information />} />
       <Route path="/Reservation" element={<Form_reservation />} />
       <Route path="/Reservation/Payment_Reservation" element={<Payment_Reservation />} />
       <Route path="/Reservation/Payment_Reservation/Reservation_Information" element={<Reservation_information />} />

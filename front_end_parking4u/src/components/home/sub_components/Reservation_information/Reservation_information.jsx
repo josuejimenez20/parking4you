@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Reservation_card } from "../../../common/cards/Reservation_card";
 import { getUserNameLocalStorage } from "../../../../helpers/reservations/getUserNameLocalStorage";
 
+import "../../../../styles/common/cards/reservation_card_style.css"
+
 export function Reservation_information() {
 
     const navigate = useNavigate();
@@ -22,7 +24,12 @@ export function Reservation_information() {
         setUserName(userNameLocalStorage);
     }, [])
 
+//AQUI VA EL CONTENEDOR DE LAS TARJETAS
+
     return (<>
+            <div class="container_info_pablo">
+
+    
         <Reservation_card
             user_name={userName}
             service={id_service}
@@ -32,5 +39,9 @@ export function Reservation_information() {
             hour_end={hour_end}
             amount={amount}
         />
-    </>)
+
+</div>
+    </>
+    
+    )
 }

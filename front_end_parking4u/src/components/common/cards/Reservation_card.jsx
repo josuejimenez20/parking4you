@@ -1,18 +1,18 @@
 import React from "react";
 import "../../../styles/common/cards/reservation_card_style.css";
 
+
 export function Reservation_card({
-    service,
-    user_name,
-    date_start,
-    date_end,
-    hour_start,
-    hour_end,
-    amount
+    service = "autolavado",
+    user_name = "pablo",
+    date_start = "12/07/2222",
+    date_end = "13/07/2222",
+    hour_start = "15:00",
+    hour_end = "17:00",
+    amount = "50.00"
 }) {
 
     return (<>
-            <div class="container">
                 <div class="card">
                     <div class="imageBox">
                         <img src="../../../assets/coche.png" />
@@ -37,6 +37,6 @@ export function Reservation_card({
                         </div>
                     </div>
                 </div>
-            </div>
+            
     </>)
 }
