@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
     fetchNewReservation,
     fetchNewReservationSuccess,
-    fetchReservationFailure
+    fetchReservationFailure,
+    fetchPreReservation
 } from "../../slices/reservations/indexReservations";
 
 export const newReservation = (formData, paymentData) => async (dispatch) => {
@@ -10,6 +11,8 @@ export const newReservation = (formData, paymentData) => async (dispatch) => {
     const formAndPaymentData = Object.assign({}, formData, paymentData);
 
     try {
+
+        dispatch(fetchPreReservation(formAndPaymentData));
 
         dispatch(fetchNewReservation());
 

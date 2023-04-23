@@ -1,7 +1,7 @@
 
 const { getAllReservationsModel,
     createNewReservationModel, getExcludeTimesByDayModels,
-    deleteReservationByIdModel
+    deleteReservationByIdModel, getReservationsByIdUserModels
 } = require('../../models/reservations/reservationsModels');
 
 const { verificateStatusSpotServices,
@@ -15,6 +15,19 @@ const getAllReservationsServices = async () => {
     try {
         let response = await getAllReservationsModel();
         return response;
+    } catch (error) {
+        return error;
+    }
+}
+
+const getReservationsByIdUserServices = async (userId) => {
+
+    try {
+
+        let response = await getReservationsByIdUserModels(userId);
+        
+        return response;
+
     } catch (error) {
         return error;
     }
@@ -46,7 +59,7 @@ const createNewReservationService = async (data) => {
             return [];
         }
 
-        const {insertId} = await createNewReservationModel(data);
+        const { insertId } = await createNewReservationModel(data);
 
         // SENT booking's id that We got from 
         // "responseCreateNewReservation" and the
@@ -83,11 +96,11 @@ const getExcludeTimesByDayServices = async (day) => {
 }
 
 const deleteReservationByIdServices = async (id_booking) => {
-    
+
     try {
 
         let reponse = await deleteReservationByIdModel(id_booking);
-        
+
     } catch (error) {
         return error;
     }
@@ -95,6 +108,7 @@ const deleteReservationByIdServices = async (id_booking) => {
 
 module.exports = {
     getAllReservationsServices,
+    getReservationsByIdUserServices,
     createNewReservationService,
     getExcludeTimesByDayServices,
     deleteReservationByIdServices

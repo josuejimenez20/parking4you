@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import { getHoursCalendarData } from "../../../../helpers/reservations/getHoursCalendarData";
 import { execludeTimesForEndTime } from "../../../../helpers/reservations/convertSetExcludeTimes";
 import "react-datepicker/dist/react-datepicker.css";
+import "../../../../styles/home/sub_components_styles/calendar_reservation.css";
 
 export function Calendar_reservation(
     {
@@ -74,12 +75,12 @@ export function Calendar_reservation(
 
     return (
         <div>
-            <h3>Fecha y hora de inicio:</h3>
+            <h3 className="date_title_calendar">Fecha y hora de inicio:</h3>
             <DatePicker
                 {...datePickerOptions}
                 withPortal
             />
-            <h3>Fecha y hora final:</h3>
+            <h3 className="date_title_calendar">Fecha y hora final:</h3>
             {
                 enableSecondCalendar ?
                     <DatePicker

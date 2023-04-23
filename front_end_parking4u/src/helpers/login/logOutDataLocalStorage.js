@@ -1,8 +1,4 @@
 export const logOutDataLocalStorage = () => {
-    const itemKey = 'USER_STORAGE_KEY';
-    const item = localStorage.getItem(itemKey);
-
-    if (item) {
-        localStorage.removeItem(itemKey);
-    }
+    localStorage.removeItem('USER_STORAGE_KEY');
+    localStorage.removeItem('USER_NAME');
 }
