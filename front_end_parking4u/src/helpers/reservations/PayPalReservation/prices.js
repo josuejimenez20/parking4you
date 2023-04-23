@@ -1,8 +1,7 @@
 
 const prices = {
-    1: 50,
-    2: 100,
-    3: 150,
+    1: 20,
+    2: 40,
 }
 
 export const getPrice = (id_services) => {

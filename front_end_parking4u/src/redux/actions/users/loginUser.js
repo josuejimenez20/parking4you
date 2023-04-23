@@ -5,8 +5,6 @@ import {
     fetchLoginFailure
 } from "../../slices/users/loginUserSlice";
 
-//http://localhost:3000/api/v1/users/login_verificate
-
 export const loginUser = (dataForm) => async (dispatch) => {
 
     try {

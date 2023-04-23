@@ -27,7 +27,7 @@ export function Reservation_information() {
 //AQUI VA EL CONTENEDOR DE LAS TARJETAS
 
     return (<>
-            <div class="container_info_pablo">
+            <div className="container_info_pablo">
 
     
         <Reservation_card

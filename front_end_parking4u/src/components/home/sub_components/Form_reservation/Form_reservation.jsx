@@ -5,6 +5,7 @@ import { Calendar_reservation } from "./Calendar_reservation";
 import { getIdUser } from '../../../../helpers/users/getIdUser';
 import { fetchPreReservation } from '../../../../redux/slices/reservations/newReservation';
 import { convertCalendarData } from '../../../../helpers/reservations/converCalendarData';
+import { changeToColors } from '../../../../redux/slices/reservations/colorProcessReservations';
 import "../../../../styles/home/sub_components_styles/form_reservation_style.css";
 
 export function Form_reservation() {
@@ -89,6 +90,13 @@ export function Form_reservation() {
 
         dispatch(fetchPreReservation(formData));
 
+        dispatch(changeToColors({
+            login: true,
+            bookButton: true,
+            data: true,
+            end: false
+        }))
+
         navigate('Payment_Reservation', { replace: true })
     }
 
@@ -112,8 +120,7 @@ export function Form_reservation() {
                     <br />
                     <select id="services" name="services">
                         <option value="1">Estacionamiento</option>
-                        <option value="2">Autolavado</option>
-                        <option value="3">Estacionamiento y Autolavado</option>
+                        <option value="2">Estacionamiento y Autolavado</option>
                     </select>
                     <br />
                     <br />

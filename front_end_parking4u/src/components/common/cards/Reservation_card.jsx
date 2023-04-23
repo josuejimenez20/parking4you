@@ -3,36 +3,36 @@ import "../../../styles/common/cards/reservation_card_style.css";
 
 
 export function Reservation_card({
-    service = "autolavado",
-    user_name = "pablo",
-    date_start = "12/07/2222",
-    date_end = "13/07/2222",
-    hour_start = "15:00",
-    hour_end = "17:00",
-    amount = "50.00"
+    service = "--------",
+    user_name = "--------",
+    date_start = "--------",
+    date_end = "--------",
+    hour_start = "--------",
+    hour_end = "--------",
+    amount = "--------"
 }) {
 
     return (<>
-                <div class="card">
-                    <div class="imageBox">
-                        <img src="../../../assets/coche.png" />
+                <div className="card">
+                    <div className="imageBox">
+                        <img id="img_car"></img>
                     </div>
-                    <div class="contentBox">
-                        <h2>Servicio de {service}</h2>
-                        <div class="description">
-                            <h3>Nombre :</h3>
+                    <div className="contentBox">
+                        <h2 className="subtitle_information">Servicio de {service}</h2>
+                        <div className="description">
+                            <h3 className="subtitle_information">Nombre :</h3>
                             <span>{user_name}</span>
                         </div>
-                        <div class="description">
-                            <h3>Fecha :</h3>
+                        <div className="description">
+                            <h3 className="subtitle_information">Fecha :</h3>
                             <span>{date_start}</span>
                         </div>
-                        <div class="description">
-                            <h3>Hora :</h3>
+                        <div className="description">
+                            <h3 className="subtitle_information">Hora :</h3>
                             <span>{hour_start} - {hour_end}</span>
                         </div>
-                        <div class="description">
-                            <h3>Costo :</h3>
+                        <div className="description">
+                            <h3 className="subtitle_information">Costo :</h3>
                             <span>${amount}</span>
                         </div>
                     </div>
