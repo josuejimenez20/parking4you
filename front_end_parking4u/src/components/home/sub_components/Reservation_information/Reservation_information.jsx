@@ -16,7 +16,8 @@ export function Reservation_information() {
     } = useSelector((state) => state.reservations.new);
 
     const { id_service, day_start, day_end,
-        hour_start, hour_end, amount
+        hour_start, hour_end, amount,
+        reservation_code, service_name
     } = preReservationData;
 
     useEffect(() => {
@@ -32,12 +33,13 @@ export function Reservation_information() {
 
             <Reservation_card
                 user_name={userName}
-                service={id_service}
+                service={service_name}
                 date_start={day_start}
                 date_end={day_end}
                 hour_start={hour_start}
                 hour_end={hour_end}
                 amount={amount}
+                reservation_code={reservation_code}
             />
 
         </div>

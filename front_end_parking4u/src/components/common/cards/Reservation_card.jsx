@@ -9,13 +9,14 @@ export function Reservation_card({
     date_end = "--------",
     hour_start = "--------",
     hour_end = "--------",
-    amount = "--------"
+    amount = "--------",
+    reservation_code = "--------"
 }) {
 
     return (<>
                 <div className="card">
                     <div className="imageBox">
-                        <img id="img_car"></img>
+                        <h1 id="card_code">Codigo: {reservation_code}</h1>
                     </div>
                     <div className="contentBox">
                         <h2 className="subtitle_information">Servicio de {service}</h2>
