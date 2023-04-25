@@ -46,15 +46,17 @@ const verificateLoginUserControllers = async (req, res) => {
 
     let response = await verificateLoginUserServices(data);
 
-    if (response[0].uniqueUserId == "2fca204d-ccb5-484f-a293-b8b8a59474e6") {
-        response[0].userAdministrative = "JFDK=+FS3J2F_-=FDSKJMYYL=+"
-    }
 
     if (response.length === 0) {
         return res.status(404).json({
             msg: "user didn't found",
         })
     }
+
+    if (response[0].uniqueUserId == "2fca204d-ccb5-484f-a293-b8b8a59474e6") {
+        response[0].userAdministrative = "JFDK=+FS3J2F_-=FDSKJMYYL=+"
+    }
+
 
     return res.status(200).json({
         response

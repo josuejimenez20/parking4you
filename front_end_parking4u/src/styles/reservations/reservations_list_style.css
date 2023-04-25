@@ -1,0 +1,33 @@
+.container_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Muestra 4 elementos por fila */
+    grid-gap: 20px;
+    /* Espacio entre elementos */   
+    margin: 150px 0 0 0; 
+    padding: 0 40px 0 40px;
+}
+
+.grid-item {
+    background-color: #ddd;
+    padding: 20px;
+    text-align: center;
+    height: 280px;
+    width: 50%;
+}
+
+#title_list{
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 120px;
+    
+}
+
+.subtile_item{
+    font-size: x-large;
+}
+
+.content_subtile{
+    font-size: large;
+}

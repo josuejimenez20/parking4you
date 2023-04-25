@@ -69,8 +69,6 @@ const createNewReservationService = async (data) => {
 
         const responseCreateNewReservationPayment = await createNewReservationPaymentService(insertId, data);
 
-        console.log(responseCreateNewReservationPayment);
-
         response = {
             msg: "new reservation created"
         }
