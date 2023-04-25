@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Chance } from "chance";
 import { Calendar_reservation } from "./Calendar_reservation";
 import { getIdUser } from '../../../../helpers/users/getIdUser';
+import { getNameService } from '../../../../helpers/reservations/getNameService';
 import { fetchPreReservation } from '../../../../redux/slices/reservations/newReservation';
 import { convertCalendarData } from '../../../../helpers/reservations/converCalendarData';
 import { changeToColors } from '../../../../redux/slices/reservations/colorProcessReservations';
@@ -25,6 +27,7 @@ export function Form_reservation() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const chance = Chance();
 
     // const { loading: loadingExecludeTimes, success: successExecludeTimes,
     //     error: errorExecludeTimes, execludeTimesData
@@ -77,15 +80,21 @@ export function Form_reservation() {
 
     const handleNewReservation = (data) => {
 
+        const id_service = data.target.services.value;
+        const service_name = getNameService(id_service);
         const id_user_localstorage = getIdUser();
+        const randomCode = chance.string(
+            { length: 5, pool: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' });
 
         const formData = {
             id_service: data.target.services.value,
+            service_name: service_name,
             id_user: id_user_localstorage,
             day_start: dataReservation.startDay,
             hour_start: dataReservation.startHour,
             day_end: dataReservation.endDay,
             hour_end: dataReservation.endHour,
+            reservation_code: randomCode
         }
 
         dispatch(fetchPreReservation(formData));

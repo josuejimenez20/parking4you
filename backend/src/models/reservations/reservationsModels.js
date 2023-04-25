@@ -49,7 +49,7 @@ function getReservationsByIdUserModels(userId) {
 function createNewReservationModel(data) {
     const {
         id_service, id_user, day_start, day_end,
-        id_spot, hour_start, hour_end } = data;
+        id_spot, hour_start, hour_end, reservation_code } = data;
 
     // We removed the availability of the spot.
     changeStateSpotModel(id_spot, false);
@@ -58,8 +58,8 @@ function createNewReservationModel(data) {
         conexion.query(
             `INSERT INTO bookings
             (id_services, id_user, id_spot, day_start, day_end, hour_start, 
-            hour_end) VALUES ('${id_service}', '${id_user}', '${id_spot}', 
-            '${day_start}', '${day_end}', '${hour_start}', '${hour_end}');`,
+            hour_end, reservation_code) VALUES ('${id_service}', '${id_user}', '${id_spot}', 
+            '${day_start}', '${day_end}', '${hour_start}', '${hour_end}', '${reservation_code}');`,
             function (error, result, field) {
                 if (error)
                     return reject(error);

@@ -30,7 +30,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0e0041;
+    /* background: #0e0041; */
+    background: #2d45dd4c;
     clip-path: circle(150px at 80% 20%);
     transition: 0.5s ease-in-out;
 }
