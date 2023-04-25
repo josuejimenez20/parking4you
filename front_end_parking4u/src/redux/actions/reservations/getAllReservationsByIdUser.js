@@ -15,7 +15,6 @@ export const getAllReservationsByIdUser = (id_user) => async (dispatch) => {
 
         const {data} = await axios.get(`http://localhost:3000/api/v1/reservations/get_reservations_by_id_user/${id_user}`);
 
-        console.log(data.response);
         dispatch(fetchgetReservationsByIdUserSuccess(data.response));
 
     } catch (error) {

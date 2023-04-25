@@ -24,24 +24,24 @@ export function Reservation_information() {
         setUserName(userNameLocalStorage);
     }, [])
 
-//AQUI VA EL CONTENEDOR DE LAS TARJETAS
+    //AQUI VA EL CONTENEDOR DE LAS TARJETAS
 
     return (<>
-            <div className="container_info_pablo">
+        <div className="container_info_pablo">
 
-    
-        <Reservation_card
-            user_name={userName}
-            service={id_service}
-            date_start={day_start}
-            date_end={day_end}
-            hour_start={hour_start}
-            hour_end={hour_end}
-            amount={amount}
-        />
 
-</div>
+            <Reservation_card
+                user_name={userName}
+                service={id_service}
+                date_start={day_start}
+                date_end={day_end}
+                hour_start={hour_start}
+                hour_end={hour_end}
+                amount={amount}
+            />
+
+        </div>
     </>
-    
+
     )
 }

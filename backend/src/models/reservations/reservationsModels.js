@@ -22,12 +22,20 @@ function getReservationsByIdUserModels(userId) {
             `SELECT 
             bks.day_start, bks.day_end, bks.hour_start, bks.hour_end,
             us.name, us.last_name, us.second_last_name, us.telephone,
-            sp.number_spot
+            bksp.amount,
+            sp.number_spot,
+            sv.service_name
+
             FROM bookings bks 
+
             INNER JOIN users us
             ON bks.id_user = us.id_user
             INNER JOIN spots sp 
             ON bks.id_spot = sp.id_spot
+            INNER JOIN booking_payments bksp
+            ON bks.id_booking = bksp.id_booking
+            INNER JOIN services sv
+            ON bks.id_services = sv.id_service
             WHERE us.id_user = "${userId}";
             `,
             function (error, result, field) {
