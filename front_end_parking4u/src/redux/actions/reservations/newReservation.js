@@ -16,9 +16,9 @@ export const newReservation = (formData, paymentData) => async (dispatch) => {
 
         dispatch(fetchNewReservation());
 
-        const response = await axios.post('http://localhost:3000/api/v1/reservations/new', formAndPaymentData);
+        const {data} = await axios.post('http://localhost:3000/api/v1/reservations/new', formAndPaymentData);
 
-        dispatch(fetchNewReservationSuccess("Reservacion hecha"));
+        dispatch(fetchNewReservationSuccess(data.response));
 
     } catch (error) {
 

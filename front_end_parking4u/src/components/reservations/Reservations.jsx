@@ -63,7 +63,7 @@ export function Reservations() {
 
                 return <Reservation_Content
                     key={index}
-                    code="JFHD"
+                    code={element.reservation_code}
                     date_end={element.day_end}
                     date_start={element.day_start}
                     hour_end={element.hour_end}

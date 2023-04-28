@@ -21,6 +21,7 @@ function getReservationsByIdUserModels(userId) {
         conexion.query(
             `SELECT 
             bks.day_start, bks.day_end, bks.hour_start, bks.hour_end,
+            bks.reservation_code,
             us.name, us.last_name, us.second_last_name, us.telephone,
             bksp.amount,
             sp.number_spot,
@@ -52,7 +53,7 @@ function createNewReservationModel(data) {
         id_spot, hour_start, hour_end, reservation_code } = data;
 
     // We removed the availability of the spot.
-    changeStateSpotModel(id_spot, false);
+    // changeStateSpotModel(id_spot, false);
 
     return new Promise((resolve, reject) => {
         conexion.query(

@@ -15,10 +15,10 @@ const verificateStatusSpotServices = async (id_spot) => {
     }
 }
 
-const getRandomIdSpotAvailableServices = async () => {
+const getRandomIdSpotAvailableServices = async (hour_start, hour_end) => {
     try {
 
-        let id_random_spot = getRandomIdSpotAvailableModel();
+        let id_random_spot = getRandomIdSpotAvailableModel(hour_start, hour_end);
 
         return id_random_spot;
 

@@ -35,12 +35,14 @@ const getReservationsByIdUserServices = async (userId) => {
 
 const createNewReservationService = async (data) => {
 
+    const { hour_start, hour_end } = data;
+
     try {
 
         // Get the first avvaible spot found 
         //and chooose one and this will be "id_random_spot_avaible"
 
-        let id_random_spot_avaible = await getRandomIdSpotAvailableServices();
+        let id_random_spot_avaible = await getRandomIdSpotAvailableServices(hour_start, hour_end);
 
         if (id_random_spot_avaible.length === 0) {
             return [];
@@ -53,11 +55,11 @@ const createNewReservationService = async (data) => {
 
         data.id_spot = id_random_spot_avaible[0].id_spot;
 
-        let status_spot = await verificateStatusSpotServices(data.id_spot);
+        // let status_spot = await verificateStatusSpotServices(data.id_spot);
 
-        if (status_spot.length === 0) {
-            return [];
-        }
+        // if (status_spot.length === 0) {
+        //     return [];
+        // }
 
         const { insertId } = await createNewReservationModel(data);
 
@@ -69,8 +71,11 @@ const createNewReservationService = async (data) => {
 
         const responseCreateNewReservationPayment = await createNewReservationPaymentService(insertId, data);
 
+        const number_spot = id_random_spot_avaible[0].id_spot;
+
         response = {
-            msg: "new reservation created"
+            msg: "new reservation created",
+            number_spot
         }
 
         return response;

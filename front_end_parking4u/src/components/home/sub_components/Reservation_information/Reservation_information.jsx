@@ -12,13 +12,15 @@ export function Reservation_information() {
 
     const [userName, setUserName] = useState();
 
-    const { preReservationData
+    const { preReservationData, reservationData
     } = useSelector((state) => state.reservations.new);
 
-    const { id_service, day_start, day_end,
+    const { day_start, day_end,
         hour_start, hour_end, amount,
         reservation_code, service_name
     } = preReservationData;
+
+    const { number_spot } = reservationData;
 
     useEffect(() => {
         const userNameLocalStorage = getUserNameLocalStorage();
@@ -40,6 +42,7 @@ export function Reservation_information() {
                 hour_end={hour_end}
                 amount={amount}
                 reservation_code={reservation_code}
+                number_spot={number_spot}
             />
 
         </div>

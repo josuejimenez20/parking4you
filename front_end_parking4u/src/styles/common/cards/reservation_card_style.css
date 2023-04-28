@@ -4,6 +4,18 @@
     min-height: 100vh;
     background: #131313;
 }
+
+#number_spot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageBox{
+    display: flex;
+    justify-content: center;
+}
+
 .container_info_pablo{
     position: relative;
 }
