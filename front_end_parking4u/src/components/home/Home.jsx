@@ -5,6 +5,7 @@ import { HomeRoutes } from '../../routes/home/HomeRoutes';
 import { logOutDataLocalStorage } from '../../helpers/login/logOutDataLocalStorage';
 import { changeToColors } from '../../redux/slices/reservations/colorProcessReservations';
 import "../../styles/home/main_page_style.css";
+import LogoBlanco from "../../assets/LogoBlanco.png";
 
 
 
@@ -46,24 +47,29 @@ export function Home() {
     }
 
     return (
+        
         <>
+        
             <header>
                 <div id="rectangulo">
-                    <button id="logoblanco"></button>
+                <img src={LogoBlanco} alt="" />
                     <button id="login"
                         onClick={() => {
                             logOut();
                         }}
-                    >Cerrar Sesion</button>
+                    >Cerrar Sesión</button>
 
                     <button
-                        id=''
+                        id='reservations'
                         onClick={(() => {
                             goToViewMyReservations();
                         })}
                     >Mis Reservaciones</button>
+                    
+                    
                 </div>
             </header>
+            
             <div id="weAre">
                 <div id="rectangulo1">
                     <div id="logonegro"></div>
@@ -84,10 +90,10 @@ export function Home() {
                         changeViewToRegister();
                     }}
                 > Reservar </button>
-                <div id="clickalbot" style={{ color: colorsChange.bookButton ? "white" : "" }}>Click al boton de reserva</div>
+                <div id="clickalbot" style={{ color: colorsChange.bookButton ? "white" : "" }}>Click al botón de reserva</div>
                 <div id="disfrutatu" style={{ color: colorsChange.end ? "white" : "" }}>Disfruta tu lugar</div>
                 <div id="ingresatus" style={{ color: colorsChange.data ? "white" : "" }}>Ingresa tus datos y paga</div>
-                <div id="iniciasesi" style={{ color: colorsChange.login ? "white" : "" }}>Inicia Sesion</div>
+                <div id="iniciasesi" style={{ color: colorsChange.login ? "white" : "" }}>Inicia Sesión</div>
                 <div id="linea6"></div>
                 <div id="valo">1</div>
                 <div id="valo2">2</div>
@@ -102,6 +108,9 @@ export function Home() {
             <div id="information">
                 <div id="rectabout"></div>
             </div>
+            
         </>
+        
     )
+
 }

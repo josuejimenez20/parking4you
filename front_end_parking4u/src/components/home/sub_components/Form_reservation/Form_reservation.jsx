@@ -126,6 +126,7 @@ export function Form_reservation() {
     return (
         <>
             <div id="reservation">
+                <div className='bg-form'>
                 <Calendar_reservation
                     startDate={startDate}
                     setStartDate={setStartDate}
@@ -149,6 +150,13 @@ export function Form_reservation() {
                     <br />
                     <input type="Submit" name="Submit" className="submit_reservaiton" />
                 </form>
+                <div id="instructions">
+                    1 hora de estacionamiento: $10.00.
+                </div>
+                <div id="instructions">
+                    Autolavado: $80.00.
+                </div>  
+                </div>
             </div>
         </>
     )

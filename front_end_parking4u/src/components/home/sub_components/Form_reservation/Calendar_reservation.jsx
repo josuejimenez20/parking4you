@@ -75,19 +75,28 @@ export function Calendar_reservation(
 
     return (
         <div>
+            
             <h3 className="date_title_calendar">Fecha y hora de inicio:</h3>
-            <DatePicker
+            <div id = "form1">
+            <DatePicker  className="custom-datepicker"
                 {...datePickerOptions}
                 withPortal
             />
+            </div>
             <h3 className="date_title_calendar">Fecha y hora final:</h3>
             {
                 enableSecondCalendar ?
-                    <DatePicker
+                    <DatePicker className="custom-datepicker"
                         {...timePickerOptions}
                         withPortal
                     /> : <></>
             }
+            <div id="instructions">
+                Horario de lunes a domingo.
+            </div>
+            <div id="instructions">
+                De 6:00 AM a 10 PM.
+            </div>
         </div>
     );
 }
