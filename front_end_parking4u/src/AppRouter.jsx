@@ -6,6 +6,7 @@ import { Register } from "./components/register/Register";
 import { Home } from "./components/home/Home";
 import { Home_administrative } from "./components/administrative/Home_administrative";
 import { Reservations } from "./components/reservations/Reservations";
+import { Not_Found } from "./components/common/not_found/Not_Found";
 
 
 export function AppRouter() {
@@ -37,7 +38,7 @@ export function AppRouter() {
       <Route path="/Home/*" element={<Home />} />
       <Route path="/Administrative/*" element={<Home_administrative />} />
       <Route path="/Reservations" element={<Reservations />} /> 
-      {/* <Route path='*' element={<NotFound />} /> */}
+      <Route path='*' element={<Not_Found />} />
     </Routes>
   </>);
 }

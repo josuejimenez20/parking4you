@@ -76,21 +76,26 @@ export function Home() {
             </div>
             <div id="steps">
                 <div id="rectangulo2"></div>
+                <div id="glass">
+
+                </div>
                 <button id="reserva"
                     onClick={() => {
                         changeViewToRegister();
                     }}
                 > Reservar </button>
-                <div id="clickalbot" style={{ color: colorsChange.bookButton ? "green" : "" }}>Click al boton de reserva</div>
-                <div id="disfrutatu" style={{ color: colorsChange.end ? "green" : "" }}>Disfruta tu lugar</div>
-                <div id="ingresatus" style={{ color: colorsChange.data ? "green" : "" }}>Ingresa tus datos y paga</div>
-                <div id="iniciasesi" style={{ color: colorsChange.login ? "green" : "" }}>Inicia Sesion</div>
+                <div id="clickalbot" style={{ color: colorsChange.bookButton ? "white" : "" }}>Click al boton de reserva</div>
+                <div id="disfrutatu" style={{ color: colorsChange.end ? "white" : "" }}>Disfruta tu lugar</div>
+                <div id="ingresatus" style={{ color: colorsChange.data ? "white" : "" }}>Ingresa tus datos y paga</div>
+                <div id="iniciasesi" style={{ color: colorsChange.login ? "white" : "" }}>Inicia Sesion</div>
                 <div id="linea6"></div>
                 <div id="valo">1</div>
                 <div id="valo2">2</div>
                 <div id="valo3">3</div>
                 <div id="valo4">4</div>
+                
             </div>
+            
 
             <HomeRoutes />
 

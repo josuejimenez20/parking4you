@@ -30,9 +30,6 @@ export function Reservations() {
         navigate('/Home');
     }
 
-    useEffect(() => {
-        console.log(userReservations);
-    }, [userReservations])
 
     return (<>
 
