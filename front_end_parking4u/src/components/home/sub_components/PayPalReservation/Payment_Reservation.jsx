@@ -70,7 +70,7 @@ export function Payment_Reservation() {
     return (<>
         <div id="payment">
             <div id="content_title_payment">
-                <h1 id="title_payment">Pago de servicio</h1>
+                {/* <h1 id="title_payment">Pago de servicio</h1> */}
             </div>
             {
                 error ?

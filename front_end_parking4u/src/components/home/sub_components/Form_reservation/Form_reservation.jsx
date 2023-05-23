@@ -148,7 +148,7 @@ export function Form_reservation() {
                     </select>
                     <br />
                     <br />
-                    <input type="Submit" name="Submit" className="submit_reservaiton" />
+                    <input type="Submit" name="Submit" className="submit_reservaiton" value="Enviar"/>
                 </form>
                 <div id="instructions">
                     1 hora de estacionamiento: $10.00.

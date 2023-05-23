@@ -14,36 +14,41 @@ export function Reservation_Content({
 
     return (<>
         <div className="grid-item">
+            <h5 className="subtile_item code_card_title">
+                Código:
+            </h5>
+            <p className="content_subtile code_card">
+                {code}
+            </p>
+            <br />
             <h5 className="subtile_item">
-                Dia:
+                Día:
             </h5>
             <p className="content_subtile">
                 {date_start}
             </p>
+            <br />
             <h5 className="subtile_item">
                 Hora de entrada:
             </h5>
             <p className="content_subtile">
                 {hour_start}
             </p>
+            <br />
             <h5 className="subtile_item">
                 Hora de salida:
             </h5>
             <p className="content_subtile">
                 {hour_end}
             </p>
-            <h5 className="subtile_item">
-                Codigo:
-            </h5>
-            <p className="content_subtile">
-                {code}
-            </p>
+            <br />
             <h5 className="subtile_item">
                 Servicio:
             </h5>
             <p className="content_subtile">
                 {service}
             </p>
+            <br />
             <h5 className="subtile_item">
                 Nombre:
             </h5>

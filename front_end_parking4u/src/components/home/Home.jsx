@@ -38,8 +38,7 @@ export function Home() {
     }, [colorsChangeState])
 
     const logOut = () => {
-        logOutDataLocalStorage();
-        navigate('/Login');
+        logOutDataLocalStorage( navigate('/Login'));
     }
 
     const goToViewMyReservations = () => {

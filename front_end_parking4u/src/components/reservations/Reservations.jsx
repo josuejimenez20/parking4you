@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { getIdUser } from "../../helpers/users/getIdUser";
 import { logOutDataLocalStorage } from "../../helpers/login/logOutDataLocalStorage";
 import { getAllReservationsByIdUser } from "../../redux/actions/reservations/getAllReservationsByIdUser";
-import "../../styles/reservations/reservations_list_style.css";
 import { Reservation_Content } from "./reservation_content";
+import "../../styles/reservations/reservations_list_style.css";
+import LogoBlanco from "../../assets/LogoBlanco.png";
 
 export function Reservations() {
 
@@ -22,8 +23,7 @@ export function Reservations() {
     }, [])
 
     const logOut = () => {
-        logOutDataLocalStorage();
-        navigate('/Login');
+        logOutDataLocalStorage(navigate('/Login'));
     }
 
     const goToViewReservation = () => {
@@ -35,7 +35,7 @@ export function Reservations() {
 
         <header>
             <div id="rectangulo">
-                <button id="logoblanco"></button>
+                <img src={LogoBlanco} alt="" />
                 <button id="login"
                     onClick={() => {
                         logOut();
@@ -43,7 +43,7 @@ export function Reservations() {
                 >Cerrar Sesion</button>
 
                 <button
-                    id=''
+                    id='reservations'
                     onClick={(() => {
                         goToViewReservation();
                     })}

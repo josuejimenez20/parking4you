@@ -22,7 +22,7 @@
   background-color: orange;
   border-radius: 20px;
   font-weight:bolder;
-
+  cursor: pointer;
 }
 #instructions{
   text-align: center;
