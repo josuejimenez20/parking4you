@@ -4,6 +4,7 @@ import "../../../styles/common/cards/reservation_card_style.css";
 
 export function Reservation_card({
     service = "--------",
+    number_spot = "--------",
     user_name = "--------",
     date_start = "--------",
     date_end = "--------",
@@ -17,6 +18,9 @@ export function Reservation_card({
                 <div className="card">
                     <div className="imageBox">
                         <h1 id="card_code">Codigo: {reservation_code}</h1>
+                    </div>
+                    <div id="number_spot">
+                        <h1 id="card_code">Lugar: {number_spot}</h1>
                     </div>
                     <div className="contentBox">
                         <h2 className="subtitle_information">Servicio de {service}</h2>

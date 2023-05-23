@@ -79,7 +79,7 @@ export function Login() {
                     </div>
                     {/* <div className="box" style="background: #0d111e;"> */}
                     <div className="box" id="inputs">
-                        <input type="Submit" name="Submit" className="submit" />
+                        <input type="Submit" name="Submit" className="submit" value="Enviar" />
                     </div>
                     <div id="links">
                         <a id="link_login" onClick={() => {

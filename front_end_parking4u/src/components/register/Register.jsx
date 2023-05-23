@@ -118,7 +118,7 @@ export function Register() {
                 </div>
                 {/* <div className="box" style="background: #0d111e;"> */}
                 <div id="inputs" className="box">
-                    <input type="Submit" name="Submit" className="submit" />
+                    <input type="Submit" name="Submit" className="submit" value="Enviar" />
                 </div>
 
                 <div id="links">

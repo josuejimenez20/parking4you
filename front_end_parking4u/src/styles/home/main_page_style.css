@@ -9,19 +9,19 @@
     background: black;
     background-blend-mode: normal;
   }
-  #logoblanco {
+  #logoblanco{
     top: calc(0.8vw);
     width: 1vh;
     height: calc(3vw);
     background-repeat: no-repeat;
     background:  transparent;
     background-image: url(../../assets/LogoBlanco.png);
+    
   }
-  #login { 
+  #reservations{
     position: absolute;
     width: 20%vh;
     height: 5vh;
-    background-color: transparent;
     color: white;
     font-family: Inter;
     font-size: 20px;
@@ -30,8 +30,34 @@
     text-align: center;
     display: flex;
     align-items: center;
-    right: 1vh;
+    left: 44%;
     top: 2vh;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.5); /* Color de fondo transparente */
+    backdrop-filter: blur(15px); /* Aplicar un filtro de desenfoque */
+    border-radius: 10px; /* Añadir bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Añadir sombra */
+  }
+  #login { 
+    position: absolute;
+    width: 20%vh;
+    height: 5vh;
+    
+    color: white;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    right: 4vh;
+    top: 2vh;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.5); /* Color de fondo transparente */
+    backdrop-filter: blur(15px); /* Aplicar un filtro de desenfoque */
+    border-radius: 10px; /* Añadir bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Añadir sombra */
   }
 
 
@@ -51,9 +77,21 @@
     display: block;
     width: 100%;
     height: 25vh;
-    background: linear-gradient(180deg, #b2b8df 14.85%, #88d4e9 40.59%, #42b7ec 100%);
+    /* background: linear-gradient(180deg, #b2b8df 14.85%, #aa88e9 40.59%, #42b7ec 100%); */
     background-blend-mode: normal;
-    box-shadow: 0px 2px 4px rgba(100,100,100,0.5);
+    z-index: 0;
+    
+    
+  }
+  #glass{
+    position: absolute;
+    width: 100%;
+    height: 25vh;
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo semitransparente */
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    backdrop-filter: blur(4px); /* Aplicamos el filtro de desenfoque */
+    border: 1px solid rgba(255, 255, 255, 0.176);
+    z-index: 0; /* Asegurarse que quede detrás del contenido */
   }
   #reserva{
     position: absolute;
@@ -68,6 +106,8 @@
     font-style: italic;
     font-weight: 500;
     text-align: center;
+    border-radius: 20px;
+    border: none;
   }
   #valo {
     position: absolute;
@@ -187,7 +227,7 @@
   }
   #rectabout {
     width: 100%;
-    height: 8vw;
+    height: 1vw;
     background: #0d111e;
     background-blend-mode: normal;
     box-shadow: 0px 2px 4px rgba(100,100,100,0.5);
@@ -195,7 +235,7 @@
   #aboutUs {
     width: 100%;
     height: 492px;
-    background: #42b7ec;
+    background: #6300ee4b;
     background-blend-mode: normal;
   }
   #rectder{
@@ -238,7 +278,7 @@
   #somosunaem {
     position: absolute;
     left: 10%;
-    top: 35%;
+    top: 50%;
     width: 80%;
     height: 50%;
     color: #040026;

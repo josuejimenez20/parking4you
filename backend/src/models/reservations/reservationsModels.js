@@ -6,7 +6,24 @@ function getAllReservationsModel() {
 
     return new Promise((resolve, reject) => {
         conexion.query(
-            `SELECT * FROM bookings;`,
+            `SELECT 
+            bks.day_start, bks.day_end, bks.hour_start, bks.hour_end,
+            bks.reservation_code,
+            us.name, us.last_name, us.second_last_name, us.telephone,
+            bksp.amount,
+            sp.number_spot,
+            sv.service_name
+
+            FROM bookings bks 
+
+            INNER JOIN users us
+            ON bks.id_user = us.id_user
+            INNER JOIN spots sp 
+            ON bks.id_spot = sp.id_spot
+            INNER JOIN booking_payments bksp
+            ON bks.id_booking = bksp.id_booking
+            INNER JOIN services sv
+            ON bks.id_services = sv.id_service;`,
             function (error, result, field) {
                 if (error)
                     return reject(error);
@@ -21,6 +38,7 @@ function getReservationsByIdUserModels(userId) {
         conexion.query(
             `SELECT 
             bks.day_start, bks.day_end, bks.hour_start, bks.hour_end,
+            bks.reservation_code,
             us.name, us.last_name, us.second_last_name, us.telephone,
             bksp.amount,
             sp.number_spot,
@@ -52,7 +70,7 @@ function createNewReservationModel(data) {
         id_spot, hour_start, hour_end, reservation_code } = data;
 
     // We removed the availability of the spot.
-    changeStateSpotModel(id_spot, false);
+    // changeStateSpotModel(id_spot, false);
 
     return new Promise((resolve, reject) => {
         conexion.query(

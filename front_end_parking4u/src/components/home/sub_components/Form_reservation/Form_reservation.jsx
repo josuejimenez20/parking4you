@@ -8,11 +8,23 @@ import { getNameService } from '../../../../helpers/reservations/getNameService'
 import { fetchPreReservation } from '../../../../redux/slices/reservations/newReservation';
 import { convertCalendarData } from '../../../../helpers/reservations/converCalendarData';
 import { changeToColors } from '../../../../redux/slices/reservations/colorProcessReservations';
+import { getNowHour } from '../../../../helpers/reservations/getNowHour';
 import "../../../../styles/home/sub_components_styles/form_reservation_style.css";
 
 export function Form_reservation() {
 
-    const excludeTimes = [
+    const [today, setToday] = useState(new Date());
+    const [hoursToday, setHoursToday] = useState();
+
+    useEffect(() => {
+        let now = today.toLocaleString();
+        const nowHour = getNowHour(now);
+
+        setHoursToday(nowHour);
+    }, [])
+
+
+    const preHoursDisable= [
         new Date().setHours(0, 0),
         new Date().setHours(1, 0),
         new Date().setHours(2, 0),
@@ -24,6 +36,8 @@ export function Form_reservation() {
         new Date().setHours(23, 0),
         new Date().setHours(24, 0),
     ];
+
+    const excludeTimes = preHoursDisable.concat(hoursToday);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -112,6 +126,7 @@ export function Form_reservation() {
     return (
         <>
             <div id="reservation">
+                <div className='bg-form'>
                 <Calendar_reservation
                     startDate={startDate}
                     setStartDate={setStartDate}
@@ -133,8 +148,15 @@ export function Form_reservation() {
                     </select>
                     <br />
                     <br />
-                    <input type="Submit" name="Submit" className="submit_reservaiton" />
+                    <input type="Submit" name="Submit" className="submit_reservaiton" value="Enviar"/>
                 </form>
+                <div id="instructions">
+                    1 hora de estacionamiento: $10.00.
+                </div>
+                <div id="instructions">
+                    Autolavado: $80.00.
+                </div>  
+                </div>
             </div>
         </>
     )

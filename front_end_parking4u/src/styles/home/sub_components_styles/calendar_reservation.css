@@ -1,4 +1,14 @@
 .date_title_calendar {
     font-size: 25px;
     margin: 10px 0 10px 0;
+    color: white;
+}
+.custom-datepicker{
+    height: 23px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+}
+#bg-form{
+    background: blue;
 }

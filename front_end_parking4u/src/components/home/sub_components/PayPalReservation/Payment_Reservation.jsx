@@ -15,7 +15,6 @@ export function Payment_Reservation() {
     const navigate = useNavigate();
 
     const [amountReservation, setAmountReservation] = useState();
-    const [hoursReservation, setHoursReservation] = useState();
     const [shouldMakePayment, setShouldMakePayment] = useState(true); // initialize to true
 
     const { loading, success, error,
@@ -24,7 +23,7 @@ export function Payment_Reservation() {
 
     const createNewReservation = (data) => {
 
-        const amount = amountReservation * hoursReservation;
+        const amount = amountReservation;
 
         const paymentData = {
             amount: amount,
@@ -63,8 +62,7 @@ export function Payment_Reservation() {
         // We get hours and multipli x amountReservation
         const hours = hoursCalculate(preReservationData.hour_start, preReservationData.hour_end);
 
-        setAmountReservation(price);
-        setHoursReservation(hours);
+        setAmountReservation(price * hours);
     }, [])
 
 
@@ -72,7 +70,7 @@ export function Payment_Reservation() {
     return (<>
         <div id="payment">
             <div id="content_title_payment">
-                <h1 id="title_payment">Pago de servicio</h1>
+                {/* <h1 id="title_payment">Pago de servicio</h1> */}
             </div>
             {
                 error ?

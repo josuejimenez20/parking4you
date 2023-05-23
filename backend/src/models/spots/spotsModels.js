@@ -33,15 +33,31 @@ function verificateStatusSpotModel(id_spot) {
             })
     })
 }
-function getRandomIdSpotAvailableModel() {
+function getRandomIdSpotAvailableModel(hour_start, hour_end) {
+
+    //     SELECT sp.id_spot FROM spots sp
+    // WHERE sp.id_spot NOT IN(
+    //     SELECT id_spot FROM bookings
+    // WHERE(hour_start BETWEEN '10:00' AND '13:00') OR(hour_end BETWEEN '10:00' AND '13:00')
+    // GROUP BY id_spot
+    // ) LIMIT 1;
+
+    // SELECT sp.id_spot 
+    //         FROM spots sp 
+    //         WHERE sp.state = "1" 
+    //         LIMIT 1; 
 
     return new Promise((resolve, reject) => {
         conexion.query(
             `
-            SELECT sp.id_spot 
-            FROM spots sp 
-            WHERE sp.state = "1" 
-            LIMIT 1;    
+        SELECT sp.id_spot FROM spots sp
+        WHERE sp.id_spot NOT IN(
+        SELECT id_spot FROM bookings
+        WHERE(hour_start BETWEEN '${hour_start}' AND '${hour_end}') 
+        OR (hour_end BETWEEN '${hour_start}' AND '${hour_end}')
+            GROUP BY id_spot
+        ) LIMIT 1;
+               
             `,
             function (error, result, field) {
                 if (error)
